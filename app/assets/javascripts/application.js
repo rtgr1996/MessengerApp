@@ -1,4 +1,4 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
+ // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
 // Any JavaScript/Coffee file within this directory, lib/assets/javascripts, or any plugin's
@@ -11,5 +11,20 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require jquery
 //= require turbolinks
 //= require_tree .
+//= require semantic-ui
+
+scroll_bottom = function() {
+  if ($('#messages').length > 0) {
+    $('#messages').scrollTop($('#messages')[0].scrollHeight);
+  }
+}
+$(document).on('turbolinks:load', function(){
+	$('.ui.dropdown').dropdown();
+	$('.message .close').on('click', function() {$(this)
+	    .closest('.message').transition('fade');
+	});
+	scroll_bottom();
+})
